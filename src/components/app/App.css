@@ -1,0 +1,105 @@
+
+
+p{
+  color: #282c34;
+  font-size: 15px;
+  display: flex;
+  place-content: center;
+}
+
+a{
+  color: #efdfd9;
+  font-size: 13px;
+  display: block;
+  border-bottom: 1px solid;
+}
+
+h4{
+  margin-inline-start: 15px;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+#target{
+  width: 365px;
+  height: 161px;
+  direction: ltr;
+  background: #efeeee;
+  border-radius: 8px;
+  box-shadow: 0 0 5px;
+}
+.header{
+  background-color: #000000a3;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  height: 35px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.inside{
+  background: #fefafa;
+  border-radius: 4px;
+  box-shadow: 0 0 1px;
+  width: 335px;
+  height: 95px;
+  display: inline-block;
+}
+.progress-bar {
+  height: 20px;
+  width: 130px;
+  border: 1px solid #333;
+  margin-inline-start: 25px;
+}
+.range {
+  background: limegreen;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .3s ease-in;
+}
+.range_money{
+  height: 100%;
+  border-radius: inherit;
+  transition: width .3s ease-in;
+}
+.target_btn{
+  width: 50px;
+  height: 45px;
+  background: #898282;
+  border-radius: 3px;
+
+}
+.inside_block{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.more{
+  color: black;
+  font-size: 15px;
+}
+.more_none{
+  display: none;
+}
+
+.color{
+  background-color:#00A910;
+}
