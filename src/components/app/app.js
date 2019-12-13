@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 
 import Service from "../../services/service";
+import ErrorMessage from "../errorMessage";
+import Spinner from "../spinner";
 
 function App() {
 
@@ -9,6 +11,7 @@ function App() {
   const [initialBalance, setInitialBalance] = useState(0);
   const [balance, setBalance] = useState(0);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [percentRange, setProgress] = useState(0);
 
   useEffect(() => {
@@ -31,21 +34,28 @@ function App() {
       .then(res => {
         setBalance(res);
         setError(false);
+        setLoading(false);
       })
       .catch(reason => {
         setError(true);
+        setLoading(false)
       })
   }
 
-  const content = !error ? <View
+  const errorMessage = error ? <ErrorMessage/> : null;
+  const spinner = loading ? <Spinner/> : null;
+  const content  = !(loading || error) ? <View
     balance={balance}
     initialBalance={initialBalance}
     percentRange={percentRange}
     setProgress={setProgress}/> : null;
 
+
   return (
     <div className="App">
       <header className="App-header">
+        {errorMessage}
+        {loading}
         {content}
       </header>
     </div>
