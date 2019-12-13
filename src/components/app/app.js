@@ -55,7 +55,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         {errorMessage}
-        {loading}
+        {spinner}
         {content}
       </header>
     </div>
