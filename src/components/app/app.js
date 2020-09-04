@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import './App.css';
 
-import Service from "../../services/service";
+import Service from "../services";
 import ErrorMessage from "../errorMessage";
 import Spinner from "../spinner";
+import {balanceLoaded, balanceError, balanceRequested} from '../redux/action';  
 
-function App() {
-
+const App = (props) => {
+  const dispatch = useDispatch();
+  const balance = useSelector(state => state.balance);
   const newService = new Service();
   const [initialBalance, setInitialBalance] = useState(0);
-  const [balance, setBalance] = useState(0);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [percentRange, setProgress] = useState(0);
@@ -32,7 +34,7 @@ function App() {
   function loadedBalance() {
     newService.getBalance()
       .then(res => {
-        setBalance(res);
+        dispatch(balanceLoaded(res))
         setError(false);
         setLoading(false);
       })
@@ -64,7 +66,7 @@ function App() {
 
 export default App;
 
-const View = ({initialBalance, percentRange}) => {
+const View = ({initialBalance, percentRange, balance}) => {
 
   let classNames = 'more';
   let btnClass = 'target_btn';
@@ -75,15 +77,16 @@ const View = ({initialBalance, percentRange}) => {
   }
   return (
     <>
-      <h4>Scrile</h4>
       <div id='target'>
-        <header className="header"><h4>Target indicator Demo</h4></header>
+        <header className="header"><h4 className='target_text'>Target indicator Demo</h4></header>
         <div className="inside">
           <div className="inside_block">
             <p>Reached: <span className="progress-bar"><div className="range" style={{width: `${percentRange}%`}}/>
               <div className="range_money" style={{width: `${percentRange}%`, textAlign: 'end', fontSize: '13px'}}>
+                {percentRange > 0 ? <div>
                   <i className="fa fa-sort-asc" aria-hidden="true"/>
-                <div>${initialBalance}</div>
+                <div className='target_money'>${initialBalance}</div>
+                </div> : null}
               </div>
             </span>
             </p>
@@ -91,10 +94,10 @@ const View = ({initialBalance, percentRange}) => {
               <header>
                 <a>Target</a>
               </header>
-              <div>$15</div>
+              <div className='money'>$15</div>
             </div>
           </div>
-          <div className={classNames}><i className="fa fa-info-circle" aria-hidden="true"/>You need $1 more to reach
+          <div className={classNames}><i className="fa fa-info-circle" aria-hidden="true"/>  You need $1 more to reach
             your target.
           </div>
         </div>

@@ -3,8 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import App from "./components/app";
+import {Provider} from 'react-redux'
+import store from './components/store';
+import Service from './components/services'
+import WithRestoService from './components/hoc'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const service = new Service();
+ReactDOM.render(<Provider store={store}><App /></Provider>,
+ document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
