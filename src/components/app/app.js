@@ -73,7 +73,7 @@ const View = ({initialBalance, percentRange, balance}) => {
 
   if (initialBalance === 15) {
     classNames = 'more_none';
-    btnClass += ' color'
+    btnClass += ' color';
   }
   return (
     <>
