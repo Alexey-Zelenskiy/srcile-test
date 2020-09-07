@@ -14,17 +14,6 @@ const reducer = (state = initialState, action) => {
           ...state,
           balance: payload,
         };
-      case BALANCE_REQUESTED:
-        return {
-          ...state,
-          loading: false
-        };
-      case BALANCE_ERROR:
-        return {
-          ...state,
-          loading: true,
-          error: true
-        };
       default:
         return state;
     }
